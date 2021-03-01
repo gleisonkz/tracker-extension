@@ -1,6 +1,6 @@
 {
-  "name": "js-extension",
-  "version": "1.0.0",
+  "name": "central-bank-tracker",
+  "version": "1.0.1",
   "description": "",
   "main": "background.ts",
   "devDependencies": {
@@ -12,13 +12,16 @@
     "typescript": "^4.2.2"
   },
   "scripts": {
-    "build:bg": "parcel build src/background.ts -d dist",
-    "build:content": "parcel build src/content.ts -d dist",
-    "build:pages": "parcel build src/pages/options.html -d dist/pages",
-    "build": "npm run build:bg && npm run build:content && npm run build:pages",
     "clean": "rimraf dist",
     "copy:static": "copyfiles manifest.json assets/**/* dist",
-    "prod": "npm run clean && npm run build && npm run copy:static"
+    "build:bg": "parcel build  src/background.ts -d dist",
+    "build:pages": "parcel build src/pages/options.html -d dist/pages",
+    "build": "npm run build:bg && npm run build:pages",
+    "prod": "npm run clean && npm run build && npm run copy:static",
+    "build-dev:bg": "parcel build --no-minify  src/background.ts -d dist",
+    "build-dev:pages": "parcel build --no-minify src/pages/options.html -d dist/pages",
+    "build-dev": "npm run build-dev:bg && npm run build-dev:pages",
+    "dev": "npm run clean && npm run build-dev && npm run copy:static"
   },
   "keywords": [],
   "author": "",
