@@ -1,0 +1,26 @@
+{
+  "name": "js-extension",
+  "version": "1.0.0",
+  "description": "",
+  "main": "background.ts",
+  "devDependencies": {
+    "@types/chrome": "0.0.133",
+    "copyfiles": "^2.4.1",
+    "parcel": "^1.12.4",
+    "rimraf": "^3.0.2",
+    "sass": "^1.32.8",
+    "typescript": "^4.2.2"
+  },
+  "scripts": {
+    "build:bg": "parcel build src/background.ts -d dist",
+    "build:content": "parcel build src/content.ts -d dist",
+    "build:pages": "parcel build src/pages/options.html -d dist/pages",
+    "build": "npm run build:bg && npm run build:content && npm run build:pages",
+    "clean": "rimraf dist",
+    "copy:static": "copyfiles manifest.json assets/**/* dist",
+    "prod": "npm run clean && npm run build && npm run copy:static"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
